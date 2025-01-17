@@ -7,8 +7,17 @@ import java.util.TreeMap;
 
 public class test {
     public static void main(String[] args) {
-        BPlusTree<Integer, Integer> bp = new BPlusTree<>(5);
+        BPlusTree<Integer, Integer> b = new BPlusTree<>(5);
         TreeMap<Integer, Integer> treeMap = new TreeMap<>();
+        for (int i = 0; i < 100; i++) {
+            b.put(i, i);
+        }
+        System.out.println(b.printTree());
+        b.remove(70);
+        System.out.println(b.printTree());
+    }
+
+    public static void checkRandom(BPlusTree<Integer, Integer> bp, TreeMap<Integer, Integer> treeMap) {
         System.out.println("start");
         int times = 50;
         int maxKey = 50;
@@ -30,7 +39,5 @@ public class test {
         if ((treeMapGetKey != null && avlGetKey != null) && !treeMapGetKey.equals(avlGetKey)) {
             System.out.println("get-> error");
         }
-        Map<Integer, Integer> range = bp.range(25, 50);
-        System.out.println();
     }
 }

@@ -104,6 +104,7 @@ public class BPlusTree<K extends Comparable<K>, V> {
     }
 
 
+
     public class BPlusNode {
         private boolean isRoot;
         private boolean isLeaf;
@@ -272,7 +273,7 @@ public class BPlusTree<K extends Comparable<K>, V> {
         }
 
         public boolean containsKey(K key) {
-            return findChildNode(key).contains(key) == -1;
+            return findChildNode(key).contains(key) != -1;
         }
 
         public K floorKey(K key) {
@@ -666,33 +667,5 @@ public class BPlusTree<K extends Comparable<K>, V> {
             }
         }
 
-
-        public void printTree(BPlusNode root, String indent) {
-            String INDENT = "    ";
-            if (root == null) {
-                return;
-            }
-            if (!root.isRoot) {
-                System.out.println(indent);
-            }
-            String nodeType = root.isLeaf ? "Leaf Node" : "Internal Node";
-            System.out.println(indent + nodeType + ":");
-            System.out.println(indent + "{");
-            for (int i = 0; i < root.keys.size(); i++) {
-                System.out.println(indent + INDENT + "Key: " + root.keys.get(i));
-                if (root.isLeaf) {
-                    System.out.println(indent + INDENT + "Value: " + root.datas.get(i));
-                } else {
-                    for (int j = 0; j <= 1; j++) {
-                        int childIndex = (i == root.keys.size() - 1) ? i + 1 : i + j + 1;
-                        if (childIndex < root.childen.size()) {
-                            BPlusNode child = root.childen.get(childIndex);
-                            printTree(child, indent + INDENT);
-                        }
-                    }
-                }
-            }
-            System.out.println(indent + "}");
-        }
     }
 }
