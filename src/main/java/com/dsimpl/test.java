@@ -13,7 +13,9 @@ public class test {
             b.put(i, i);
         }
         System.out.println(b.printTree());
+        boolean b2 = b.containsKey(70);
         b.remove(70);
+        boolean b1 = b.containsKey(70);
         System.out.println(b.printTree());
     }
 

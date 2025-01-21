@@ -273,7 +273,8 @@ public class BPlusTree<K extends Comparable<K>, V> {
         }
 
         public boolean containsKey(K key) {
-            return findChildNode(key).contains(key) != -1;
+            BPlusNode cur = findChildNode(key);
+            return cur.contains(key) != -1;
         }
 
         public K floorKey(K key) {
@@ -470,7 +471,7 @@ public class BPlusTree<K extends Comparable<K>, V> {
         }
 
         private void doRemove(K key) {
-            if (!containsKey(key)) {
+            if (containsKey(key)) {
                 return;
             }
             size--;
