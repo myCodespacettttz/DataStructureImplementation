@@ -17,7 +17,6 @@ public class test {
         b.remove(70);
         boolean b1 = b.containsKey(70);
         System.out.println(b.printTree());
-
     }
 
     public static void checkRandom(BPlusTree<Integer, Integer> bp, TreeMap<Integer, Integer> treeMap) {
